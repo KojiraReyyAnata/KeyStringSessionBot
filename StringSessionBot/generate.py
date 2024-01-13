@@ -25,7 +25,7 @@ from telethon.errors import (
 from data import Data
 
 
-ask_ques = "Please choose the python library you want to generate string session for"
+ask_ques = "Cepet Jink Pilih Yang Mana Tod Di Bawah Ini"
 buttons_ques = [
     [
         InlineKeyboardButton("Pyrogram", callback_data="pyrogram"),
@@ -50,7 +50,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         ty = "Pyrogram v2"
     if is_bot:
         ty += " Bot"
-    await msg.reply(f"Starting {ty} Key Session Generation...")
+    await msg.reply(f"Starting {ty}  Session Generation...")
     user_id = msg.chat.id
     api_id_msg = await bot.ask(user_id, 'Silahkan Kirim `API_ID`', filters=filters.text)
     if await cancelled(api_id_msg):
@@ -58,7 +58,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
     try:
         api_id = int(api_id_msg.text)
     except ValueError:
-        await api_id_msg.reply('Yang Bener Jink API_ID (which must be an integer). Klik start Key generating session again.', quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
+        await api_id_msg.reply('Yang Bener Jink API_ID (which must be an integer). Klik start generating session again.', quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return
     api_hash_msg = await bot.ask(user_id, 'Silahkan Kirim `API_HASH`', filters=filters.text)
     if await cancelled(api_hash_msg):
@@ -96,7 +96,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         await msg.reply('`API_ID` and `API_HASH` combination is invalid. Please start generating session again.', reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return
     except (PhoneNumberInvalid, PhoneNumberInvalidError):
-        await msg.reply('`PHONE_NUMBER` Anjing Dongo Yang Bener. Klik start Key generating session again.', reply_markup=InlineKeyboardMarkup(Data.generate_button))
+        await msg.reply('`PHONE_NUMBER` Anjing Dongo Yang Bener. Klik start generating session again.', reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return
     try:
         phone_code_msg = None
@@ -118,7 +118,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
             await msg.reply('GOBLOK DI BILANG PAKEK SPASI. Klik start Key generating session again.', reply_markup=InlineKeyboardMarkup(Data.generate_button))
             return
         except (PhoneCodeExpired, PhoneCodeExpiredError):
-            await msg.reply('OTP BASI SINYAL BANSOS. Klik start Key generating session again.', reply_markup=InlineKeyboardMarkup(Data.generate_button))
+            await msg.reply('OTP BASI SINYAL BANSOS. Klik start generating session again.', reply_markup=InlineKeyboardMarkup(Data.generate_button))
             return
         except (SessionPasswordNeeded, SessionPasswordNeededError):
             try:
@@ -135,7 +135,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
                 if await cancelled(api_id_msg):
                     return
             except (PasswordHashInvalid, PasswordHashInvalidError):
-                await two_step_msg.reply('Password Salah Mek Yang Bener. Klik start Key generating session again.', quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
+                await two_step_msg.reply('Password Salah Mek Yang Bener. Klik start generating session again.', quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
                 return
     else:
         if telethon:
