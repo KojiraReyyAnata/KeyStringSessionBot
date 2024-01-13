@@ -1,5 +1,5 @@
 import os
-from dotenv import load_dotenv
+from dotenv.sample import load_dotenv.sample
 
 load_dotenv()
 
