@@ -22,7 +22,7 @@ async def must_join_channel(bot: Client, msg: Message):
                     f"Biasakan Join Terlebih Dahulu [channel]({link}) to use me. After joining try again !",
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([
-                        [InlineKeyboardButton("✨ Geninstore ✨", url=link)]
+                        [InlineKeyboardButton("✨ MUST JOIN ✨", url=link)]
                     ])
                 )
                 await msg.stop_propagation()
