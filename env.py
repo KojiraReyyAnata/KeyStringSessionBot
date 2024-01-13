@@ -6,7 +6,7 @@ load_dotenv()
 API_ID = os.getenv("API_ID", "").strip()
 API_HASH = os.getenv("API_HASH", "").strip()
 BOT_TOKEN = os.getenv("BOT_TOKEN", "").strip()
-DATABASE_URL = os.getenv("DATABASE_URL", "").strip() # Not a necessary variable anymore but you can add to get stats
+MONGO_URI = os.getenv("MONGO_URI", "").strip() # Not a necessary variable anymore but you can add to get stats
 MUST_JOIN = os.getenv("MUST_JOIN", "")
 
 if not API_ID:
@@ -16,8 +16,8 @@ elif not API_HASH:
 elif not BOT_TOKEN:
     raise SystemExit("No BOT_TOKEN found. Exiting...")
 '''
-if not DATABASE_URL:
-    print("No DATABASE_URL found. Exiting...")
+if not MONGO_URI:
+    print("No MONGO_URI found. Exiting...")
     raise SystemExit
 '''
 
@@ -26,5 +26,5 @@ try:
 except ValueError:
     raise SystemExit("API_ID is not a valid integer. Exiting...")
 
-if 'postgres' in DATABASE_URL and 'postgresql' not in DATABASE_URL:
-    DATABASE_URL = DATABASE_URL.replace("postgres", "postgresql")
+if 'mongodb' in MONGO_URI and 'mongodb' not in MONGO_URI:
+    MONGO_URI = DATABASE_URL.replace("mongodb", "mongosrv")
